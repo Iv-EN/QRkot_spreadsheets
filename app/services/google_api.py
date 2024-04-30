@@ -7,7 +7,8 @@ from app import constants
 from app.core.config import settings
 
 
-async def spreadsheets_create(wrapper_services: Aiogoogle) -> str:
+async def create_tables(wrapper_services: Aiogoogle) -> str:
+    """Создаёт таблицу."""
     now_date_time = datetime.now().strftime(constants.GOOGLE_DATE_FORMAT)
     service = await wrapper_services.discover("sheets", constants.GOOGLE_VERSION_SHEETS)
     spreadsheets_body = {
@@ -37,6 +38,7 @@ async def spreadsheets_create(wrapper_services: Aiogoogle) -> str:
 
 
 async def set_user_permissions(spreadsheetid: str, wrapper_services: Aiogoogle) -> None:
+    """Предоставляет права доступа."""
     permission_body = {"type": "user", "role": "writer", "emailAddress": settings.email}
     service = await wrapper_services.discover("drive", constants.GOOGLE_VERSION_DRIVE)
     await wrapper_services.as_service_account(
@@ -46,9 +48,10 @@ async def set_user_permissions(spreadsheetid: str, wrapper_services: Aiogoogle) 
     )
 
 
-async def spreadsheets_update_value(
+async def fill_the_table_with_data(
     spreadsheetid: str, projects: List, wrapper_services: Aiogoogle
 ) -> None:
+    """Наполняет таблицу данными."""
     now_date_time = datetime.now().strftime(constants.GOOGLE_DATE_FORMAT)
     service = await wrapper_services.discover("sheets", constants.GOOGLE_VERSION_SHEETS)
     table_values = [

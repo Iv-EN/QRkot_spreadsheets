@@ -71,7 +71,6 @@ async def update_charity_project(
     Закрытый проект нельзя редактировать;
     нельзя установить требуемую сумму меньше уже вложенной.
     """
-
     charity_project_db = await check_charity_project_before_edit(
         project_id, charity_project_in, session
     )
