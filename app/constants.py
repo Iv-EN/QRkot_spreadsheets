@@ -7,7 +7,7 @@ GOOGLE_VERSION_DRIVE = "v3"
 GOOGLE_SHEET_ID = 0
 """Идентификатор Goole таблицы."""
 GOOGLE_TITLE_CLOSE_SPEED = "Время сбора средств."
-"""Имя колонки в отчёте."""
+"""Имя столбца в отчёте."""
 GOOGLE_ROW_COUNT = 100
 """Количество строк в таблице."""
 GOOGLE_COLUMN_COUNT = 11
